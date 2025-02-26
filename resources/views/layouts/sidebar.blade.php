@@ -30,6 +30,14 @@
             </a>
         </li>
         @endcan
+        @can('setting/manage_account/users.read')
+        <li class="menu-item {{ request()->segment(1) == 'list_customer' ? 'active' : '' }}">
+            <a href="{{ route('list_customer.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-check"></i>
+                <div data-i18n="list_customer">Analysis</div>
+            </a>
+        </li>
+        @endcan
         @can('control panel.read')
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Control Panel</span>

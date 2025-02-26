@@ -14,18 +14,14 @@ class Customer extends Model
     protected $fillable = [
         'customer',
         'address',
-        'contact_name',
+        'name',
         'email',
         'phone',
-        'sample_taken_by',
-        'sample_receive_date',
-        'sample_analysis_date',
-        'report_date'
     ];
 
     public function Subjects()
     {
-        return $this->belongsToMany(Subject::class, 'institute_subjects', 'institute_id', 'subject_id');
+        return $this->belongsToMany(Subject::class, 'coa_subjects', 'customer_id', 'subject_id');
     }
     // public function institute_subjects()
     // {

@@ -64,10 +64,10 @@
                             <label class="form-label" for="basicDate">Contact Name<i
                                     class="text-danger">*</i></label>
                             <div class="input-group input-group-merge has-validation">
-                                <input type="text" class="form-control @error('contact_name') is-invalid @enderror"
-                                    maxlength="120" name="contact_name" placeholder="Input phone"
-                                    value="{{ old('contact_name') }}">
-                                @error('contact_name')
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    maxlength="120" name="name" placeholder="Input phone"
+                                    value="{{ old('name') }}">
+                                @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -115,62 +115,6 @@
                                     @endforeach
                                 </select>
                                 @error('subject_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <label class="form-label" for="basicDate">SampelTaken By<i
-                                    class="text-danger">*</i></label>
-                            <div class="input-group input-group-merge has-validation">
-                                <input type="text" class="form-control @error('sample_taken_by') is-invalid @enderror"
-                                    maxlength="120" name="sample_taken_by" placeholder="Input Contact Name"
-                                    value="{{ old('sample_taken_by') }}">
-                                @error('sample_taken_by')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <label class="form-label" for="basicDate">Sample Receive Data<i
-                                class="text-danger">*</i></label>
-                            <div class="input-group input-group-merge has-validation">
-                                <input type="date" class="form-control @error('sample_receive_date') is-invalid @enderror"
-                                    maxlength="120" name="sample_receive_date" placeholder="Input Sample Recive Data"
-                                    value="{{ old('sample_receive_date') }}">
-                                @error('sample_receive_date')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <label class="form-label" for="basicDate">Sample Analysis Date<i
-                                class="text-danger">*</i></label>
-                            <div class="input-group input-group-merge has-validation">
-                                <input type="date" class="form-control @error('sample_analysis_date') is-invalid @enderror"
-                                    maxlength="120" name="sample_analysis_date" placeholder="Input Sample Analysis Date"
-                                    value="{{ old('sample_analysis_date') }}">
-                                @error('sample_analysis_date')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <label class="form-label" for="basicDate">Report Date<i
-                                class="text-danger">*</i></label>
-                            <div class="input-group input-group-merge has-validation">
-                                <input type="date" class="form-control @error('report_date') is-invalid @enderror"
-                                    maxlength="120" name="report_date" placeholder="Input Sample Report Date"
-                                    value="{{ old('report_date') }}">
-                                @error('report_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

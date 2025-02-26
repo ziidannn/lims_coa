@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\Coa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,13 @@ Route::group(['prefix' => 'coa'], function () {
     Route::any('/add', [CoaController::class, 'add'])->name('coa.add');
     Route::any('/create', [CoaController::class, 'create'])->name('coa.create');
     Route::any('/edit/{id}', [CoaController::class, 'edit'])->name('coa.edit');
+});
+
+Route::group(['prefix' => 'list_customer'], function () {
+    Route::any('/', [CoaController::class, 'list_customer'])->name('list_customer.index')->middleware('auth');
+    Route::any('/list_sample/{id}', [CoaController::class, 'list_sample'])->name('list_customer.list_sample');
+    Route::get('/data', [CoaController::class, 'data'])->name('list_customer.data');
+    Route::get('/getDataSample/{id}', [CoaController::class, 'getDataSample'])->name('list_customer.getDataSample');
 });
 
 Route::middleware('auth')->group(function () {
