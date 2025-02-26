@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-@section('title', 'Institute')
+@section('title', 'Coa')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md d-flex justify-content-center justify-content-md-end">
                         <a class="btn btn-primary btn-block btn-mail" title="Add new"
-                            href="{{ route('institute.create')}}">
+                            href="{{ route('coa.create')}}">
                             <i data-feather="plus"></i>+ Add
                         </a>
                     </div>
@@ -112,7 +112,7 @@
                 searchPlaceholder: 'Search..',
             },
             ajax: {
-                url: "{{ route('institute.data') }}",
+                url: "{{ route('coa.data') }}",
                 data: function (d) {
                     d.search = $('input[type="search"]').val(),
                     d.select_description = $('#select_description').val()
@@ -190,7 +190,7 @@
                         {
                             html = `<a class="badge bg-dark badge-icon" title="Viwe Resume" href="/preview-pdf/${row.Id}">
                                     <i class="bx bx-printer"></i></a>
-                                    <a class="badge bg-warning badge-icon" title="Edit Sampling" href="/institute/edit/${row.id}">
+                                    <a class="badge bg-warning badge-icon" title="Edit Sampling" href="/coa/edit/${row.id}">
                                     <i class="bx bx-pencil"></i></a>
                                     <a class="badge bg-danger badge-icon" title="Delete Sampling" style="cursor:pointer" onclick="DeleteId('${row.id}')">
                                     <i class="bx bx-trash icon-white"></i></a>`;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -27,6 +28,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::group(['prefix' => 'coa'], function () {
+    Route::any('/', [CoaController::class, 'index'])->name('coa.index')->middleware('auth');
+    Route::get('/data', [CoaController::class, 'data'])->name('coa.data');
+    Route::delete('/delete', [CoaController::class, 'delete'])->name('coa.delete');
+    Route::any('/add', [CoaController::class, 'add'])->name('coa.add');
+    Route::any('/create', [CoaController::class, 'create'])->name('coa.create');
+    Route::any('/edit/{id}', [CoaController::class, 'edit'])->name('coa.edit');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -51,7 +61,8 @@ Route::group(['prefix' => 'setting','middleware' => ['auth']],function () {
             Route::delete('/destroy', [RoleController::class, 'destroy'])->name('roles.destroy');
         });
         Route::group(['prefix' => 'permissions'], function () { //route to manage permissions
-            Route::any('/', [PermissionController::class, 'index'])->name('permissions.index');
+
+         Route::any('/', [PermissionController::class, 'index'])->name('permissions.index');
             Route::get('/data', [PermissionController::class, 'data'])->name('permissions.data');
             Route::get('/view/{id}', [PermissionController::class, 'view'])->name('permissions.view');
             Route::get('/view/{id}/users', [PermissionController::class, 'view_users_data'])->name('permissions.view_users_data');

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AmbientAir;
 use App\Models\Location;
-use App\Models\Institute;
-use App\Models\Sampling;
+use App\Models\Coa;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -14,9 +13,9 @@ class CustomerController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Sampling::all();
+        $data = Coa::all();
         $description = Subject::all();
-        return view('institute.index', compact('data', 'description'));
+        return view('coa.index', compact('data', 'description'));
     }
 
     public function create(Request $request)
@@ -35,8 +34,8 @@ class CustomerController extends Controller
                 'report_date' => ['required']
             ]);
 
-            // Buat Institute baru
-            $Institute = Institute::create([
+            // Buat Coa baru
+            $Coa = Coa::create([
                 'customer' => $request->customer,
                 'address' => $request->address,
                 'contact_name' => $request->contact_name,
@@ -50,21 +49,21 @@ class CustomerController extends Controller
 
             // Simpan subject_id ke tabel pivot
             if ($request->has('subject_id')) {
-                $Institute->Subjects()->attach($request->subject_id);
+                $Coa->Subjects()->attach($request->subject_id);
             }
 
-            return redirect()->route('institute.index')->with('msg', 'Data berhasil ditambahkan');
+            return redirect()->route('coa.index')->with('msg', 'Data berhasil ditambahkan');
         }
 
-        $data = Institute::all();
+        $data = Coa::all();
         $description = Subject::orderBy('name')->get();
-        return view('institute.create', compact('data', 'description'));
+        return view('coa.create', compact('data', 'description'));
     }
 
-    //Edit institute
+    //Edit Coa
     public function edit(Request $request, $id)
     {
-        $data = Institute::find($id);
+        $data = Coa::find($id);
         $description = Subject::orderBy('name')->get();
         if ($request->isMethod('POST')) {
             $this->validate($request, [
@@ -80,7 +79,7 @@ class CustomerController extends Controller
                 'report_date' => ['required']
             ]);
 
-            // Update Institute
+            // Update Coa
             $data->update([
                 'customer' => $request->customer,
                 'address' => $request->address,
@@ -98,16 +97,16 @@ class CustomerController extends Controller
                 $data->Subjects()->sync($request->subject_id);
             }
 
-            return redirect()->route('institute.index')->with('msg', 'Data berhasil diubah');
+            return redirect()->route('coa.index')->with('msg', 'Data berhasil diubah');
         }
 
-        return view('institute.edit', compact('data', 'description'));
+        return view('coa.edit', compact('data', 'description'));
     }
 
-    //Data institute
+    //Data Coa
     public function data(Request $request)
     {
-        $data = Institute::with(['Subjects' => function ($query) {
+        $data = Coa::with(['Subjects' => function ($query) {
                 $query->select('subjects.id', 'subjects.name');
             }])
             ->select('*')
@@ -137,7 +136,7 @@ class CustomerController extends Controller
 
     public function datatables()
     {
-        $data = Sampling::select('*');
+        $data = Coa::select('*');
         return DataTables::of($data)->make(true);
     }
 }

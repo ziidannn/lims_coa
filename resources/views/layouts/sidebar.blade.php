@@ -23,18 +23,10 @@
             </a>
         </li>
         @can('setting/manage_account/users.read')
-        <li class="menu-item {{ request()->segment(1) == 'institute' ? 'active' : '' }}">
-            <a href="{{ route('institute.index') }}" class="menu-link">
+        <li class="menu-item {{ request()->segment(1) == 'coa' ? 'active' : '' }}">
+            <a href="{{ route('coa.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-buildings"></i>
-                <div data-i18n="institute">Institute</div>
-            </a>
-        </li>
-        @endcan
-        @can('setting/manage_account/users.read')
-        <li class="menu-item {{ request()->segment(1) == 'result' ? 'active' : '' }}">
-            <a href="{{ route('result.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-file-find"></i>
-                <div data-i18n="result">Result</div>
+                <div data-i18n="coa">Coa</div>
             </a>
         </li>
         @endcan
@@ -81,14 +73,6 @@
                 </li>
                 @endcan
             </ul>
-        </li>
-        @endcan
-        @can('setting/manage_account/users.read')
-        <li class="menu-item {{ request()->segment(1) == 'coa' ? 'active' : '' }}">
-            <a href="{{ route('coa.regulation.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-copyright"></i>
-                <div data-i18n="coa">Manage COA</div>
-            </a>
         </li>
         @endcan
     </ul>

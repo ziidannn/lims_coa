@@ -27,8 +27,8 @@ class Customer extends Model
     {
         return $this->belongsToMany(Subject::class, 'institute_subjects', 'institute_id', 'subject_id');
     }
-    public function institute_subjects()
-    {
-        return $this->hasMany(InstituteSubject::class, 'institute_id');
-    }
+    // public function institute_subjects()
+    // {
+    //     return $this->hasMany(InstituteSubject::class, 'institute_id');
+    // }
 }
