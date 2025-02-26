@@ -3,7 +3,7 @@
     <div class="app-brand demo ">
         <a href="{{ route('index') }}" class="app-brand-link">
             <span class="app-brand-logo demo" style="margin-left: -10px">
-                <img src="{{asset('assets/img/CIS.png')}}" height="44" >
+                <img src="{{asset('assets/img/DIL.png')}}" height="44" >
             </span>
         </a>
 
@@ -22,6 +22,22 @@
                 <div data-i18n="Dashboards">Dashboard</div>
             </a>
         </li>
+        @can('setting/manage_account/users.read')
+        <li class="menu-item {{ request()->segment(1) == 'institute' ? 'active' : '' }}">
+            <a href="{{ route('institute.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-buildings"></i>
+                <div data-i18n="institute">Institute</div>
+            </a>
+        </li>
+        @endcan
+        @can('setting/manage_account/users.read')
+        <li class="menu-item {{ request()->segment(1) == 'result' ? 'active' : '' }}">
+            <a href="{{ route('result.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file-find"></i>
+                <div data-i18n="result">Result</div>
+            </a>
+        </li>
+        @endcan
         @can('control panel.read')
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Control Panel</span>
@@ -65,6 +81,14 @@
                 </li>
                 @endcan
             </ul>
+        </li>
+        @endcan
+        @can('setting/manage_account/users.read')
+        <li class="menu-item {{ request()->segment(1) == 'coa' ? 'active' : '' }}">
+            <a href="{{ route('coa.regulation.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-copyright"></i>
+                <div data-i18n="coa">Manage COA</div>
+            </a>
         </li>
         @endcan
     </ul>
