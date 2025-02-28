@@ -33,7 +33,6 @@ class CustomerController extends Controller
                 'sample_analysis_date' => ['required'],
                 'report_date' => ['required']
             ]);
-
             // Buat Coa baru
             $Coa = Coa::create([
                 'customer' => $request->customer,
@@ -46,7 +45,6 @@ class CustomerController extends Controller
                 'sample_analysis_date' => $request->sample_analysis_date,
                 'report_date' => $request->report_date,
             ]);
-
             // Simpan subject_id ke tabel pivot
             if ($request->has('subject_id')) {
                 $Coa->Subjects()->attach($request->subject_id);

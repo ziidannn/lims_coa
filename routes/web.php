@@ -6,6 +6,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\Coa;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,9 @@ Route::group(['prefix' => 'list_customer'], function () {
     Route::get('/data', [CoaController::class, 'data'])->name('list_customer.data');
     Route::get('/getDataSample/{id}', [CoaController::class, 'getDataSample'])->name('list_customer.getDataSample');
 });
+
+// pdf route
+Route::get('/resume_pdf/{customerId}/{subjectId}', [PDFController::class, 'showPdf'])->name('showPdf.pdf');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -15,7 +15,7 @@
             page-break-before: always;
         }
         table {
-          font-size: 11px;
+            font-size: 11px;
         }
         .table-bordered th, .table-bordered td {
             padding: 1px!important;
@@ -106,60 +106,70 @@
 {{-- End Footer --}}
 <div class="text-center certificate-container" style="margin-top: 45px;">
     <p class="certificate-title">CERTIFICATE OF ANALYSIS (COA)</p>
-    <div class="text-center" style="font-size: 12px; margin-left: 90px; margin-top: -10px;">Certificate No.</div>
+    <div class="text-center" style="font-size: 12px; margin-left: 80px; margin-top: -10px;">Certificate No. DIL-{{ $institute->created_at->format('y') }}COA</div>
 </div>
-<div class="col-xs-110" style="margin-top: 10px; margin-left: 70px;">
+<div class="col-xs-110" style="margin-top: 30px; margin-left: 70px;">
     <table class="mt-2 table" style="font-size: 12px;">
         <tr>
             <td width="150px">Customer</td>
             <td>:</td>
-            <td colspan="2" width="150px" style="font-weight: bold;"></td>
+            <td colspan="2" width="150px" style="font-weight: bold;">{{ $institute->customer }}</td>
         </tr>
         <tr>
             <td>Address</td>
             <td>:</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{ $institute->address }}</td>
         </tr>
         <tr>
             <td>Contact Name</td>
             <td>:</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{ $institute->name }}</td>
         </tr>
         <tr>
             <td>Email</td>
             <td>:</td>
-            <td colspan="2"><a href="mailto:" style="color: blue; text-decoration: underline;"></a></td>
+            <td colspan="2"><a href="mailto:{{ $institute->email }}" style="color: blue; text-decoration: underline;">{{ $institute->email }}</a></td>
         </tr>
         <tr>
             <td>Phone</td>
             <td>:</td>
-            <td colspan="2">+62</td>
+            <td colspan="2">{{ $institute->phone }}</td>
         </tr>
         <tr>
             <td>Subject</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $institute->name }}</td>
             <td></td>
         </tr>
         <tr>
             <td>Sample taken by</td>
             <td>:</td>
-            <td colspan="2">PT. Delta Indonesia Laboratory</td>
+            {{-- <td colspan="2">- {{ $institute->sample_taken_by }}</td> --}}
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2">- Customer</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2">- Third Party</td>
         </tr>
         <tr>
             <td>Sample Receive Date</td>
             <td>:</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{ $institute->sample_receive_date }}</td>
         </tr>
         <tr>
             <td style="padding-right: 50px;">Sample Analysis Date</td>
             <td style="padding-right: 10px;">:</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{ $institute->sample_analysis_date }}</td>
         </tr>
         <tr>
             <td>Report Date</td>
             <td>:</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{ $institute->report_date }}</td>
         </tr>
     </table>
 </div>

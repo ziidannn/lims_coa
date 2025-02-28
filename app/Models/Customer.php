@@ -17,6 +17,7 @@ class Customer extends Model
         'name',
         'email',
         'phone',
+        'created_at',
     ];
 
     public function Subjects()
